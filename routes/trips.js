@@ -5,10 +5,12 @@ const Trip = require("../models/trips");
 
 //Route pour trouver un trajet
 router.get("/", (req, res) => {
-  Trip.findOne({
+  let dateRecherchee = new Date(req.body.date)
+  Trip.find({
     departure: { $regex: new RegExp(req.body.departure, "i") },
     arrival: { $regex: new RegExp(req.body.arrival, "i") } ,
-    date: req.body.date.getTime()
+    //On veut trouver les objets qui sont comrpient entre une date et une autre.
+    date: { $gt : new Date(req.body.date) && $lt }
   }).then((data) => {
       res.json({ trips: data });
   });
