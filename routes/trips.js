@@ -9,8 +9,7 @@ router.get("/", (req, res) => {
   Trip.find({
     departure: { $regex: new RegExp(req.body.departure, "i") },
     arrival: { $regex: new RegExp(req.body.arrival, "i") } ,
-    //On veut trouver les objets qui sont comrpient entre une date et une autre.
-    date: { $gt : new Date(req.body.date) && $lt }
+    //date: req.body.date.getTime()
   }).then((data) => {
       res.json({ trips: data });
   });

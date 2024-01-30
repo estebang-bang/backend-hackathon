@@ -7,6 +7,6 @@ const panierSchema = mongoose.Schema({
 	price: Number,
 });
 
-const Panier = mongoose.model('trips', panierSchema);
+const Panier = mongoose.model('paniers', panierSchema);
 
 module.exports = Panier;
