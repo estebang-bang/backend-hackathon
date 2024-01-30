@@ -1,0 +1,22 @@
+//Route pour chercher les trajets selon la ville
+var express = require('express');
+var router = express.Router();
+const trips = require('../models/trips')
+
+router.get("/:cityName", (req, res) => {
+  trips.findOne({
+    cityName: { $regex: new RegExp(req.params.cityName, "i") },
+  }).then(data => {
+    if (data) {
+      res.json({ trips: data });
+    }
+  });
+});
+
+router.post("/sendToCart", (req, res) => {
+    trips.findOne({
+        
+    })
+})
+
+module.exports = router;
