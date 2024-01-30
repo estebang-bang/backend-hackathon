@@ -1,4 +1,3 @@
-//Route pour chercher les trajets selon la ville
 var express = require("express");
 var router = express.Router();
 const Trip = require("../models/trips");
@@ -8,17 +7,11 @@ const Trip = require("../models/trips");
 router.get("/", (req, res) => {
   Trip.findOne({
     departure: { $regex: new RegExp(req.body.departure, "i") },
-    arrival: { $regex: new RegExp(req.body.arrival, "i") },
-    date: {},
+    arrival: { $regex: new RegExp(req.body.arrival, "i") } ,
+    date: req.body.date.getTime()
   }).then((data) => {
-    if (data) {
       res.json({ trips: data });
-    }
   });
-});
-
-router.post("/sendToCart", (req, res) => {
-  trips.findOne({});
 });
 
 module.exports = router;
