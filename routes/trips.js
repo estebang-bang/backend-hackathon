@@ -9,7 +9,7 @@ router.post("/", (req, res) => {
     departure: { $regex: new RegExp(req.body.departure, "i") },
     arrival: { $regex: new RegExp(req.body.arrival, "i") } ,
   }).then(data => {
-      res.json(data);
+      res.json({trips: data});
   });
 });
 
