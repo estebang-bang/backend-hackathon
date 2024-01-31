@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-const Booking = require('../models/bookings');
+const Bookings = require('../models/bookings');
 
 router.post("/", (req, res) => {
-    const newBooking = new Booking({
+    const newBookings = new Bookings({
       departure: req.body.departure,
       arrival: req.body.arrival,
       // date: req.body.date.getTime(),
     });
-    newBooking.save().then((newDoc) => {
+    newBookings.save().then((newDoc) => {
       res.json({ newDoc: newDoc });
     });
   });
