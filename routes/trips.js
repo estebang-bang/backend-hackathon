@@ -6,7 +6,7 @@ const Trip = require("../models/trips");
 router.post("/", (req, res) => {
   let startDate = new Date(req.body.date)
   let endDate = new Date(req.body.date)
-  endDate.setDate(startDate.getDate() + 1)
+  endDate.setDate(startDate.getDate() + 1);
 
   Trip.find({
     departure: { $regex: new RegExp(req.body.departure, "i") },
