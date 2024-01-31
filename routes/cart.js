@@ -31,6 +31,14 @@ router.get("/", (req, res) => {
   });
 });
 
+router.delete('/', (req, res) => {
+  Panier.deleteOne({
+  _id : req.body._id,
+}).
+then(  (data) => {
+    res.json({data})
+  })})
+
 
 
 module.exports = router;
