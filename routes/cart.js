@@ -12,10 +12,11 @@ router.post("/", (req, res) => {
         departure: docFound.departure,
         arrival: docFound.arrival,
         price: docFound.price,
-        time: docFound.date
-        // date: req.body.date.getTime(),
+        date: docFound.date
+    
       });
       newPanier.save().then((newDoc) => {
+        console.log(newDoc)
         res.json({ newDoc: newDoc });
       });
     } else {
