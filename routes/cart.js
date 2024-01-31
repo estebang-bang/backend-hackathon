@@ -6,7 +6,8 @@ router.post("/", (req, res) => {
   const newPanier = new Panier({
     departure: req.body.departure,
     arrival: req.body.arrival,
-    // date: req.body.date.getTime(),
+    date: new Date(req.body.date),
+    price : req.body.price,
   });
   newPanier.save().then((newDoc) => {
     res.json({ newDoc: newDoc });
