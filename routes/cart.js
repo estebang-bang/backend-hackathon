@@ -6,7 +6,7 @@ router.post("/", (req, res) => {
   const newPanier = new Panier({
     departure: req.body.departure,
     arrival: req.body.arrival,
-    // date: req.body.date.getTime(),
+    // date: req.body.date.getTime,
   });
   newPanier.save().then((newDoc) => {
     res.json({ newDoc: newDoc });
@@ -18,6 +18,14 @@ router.get("/", (req, res) => {
     res.json({ Panier: data });
   });
 });
+
+router.delete('/', (req, res) => {
+  Panier.deleteOne({
+  _id : req.body._id,
+}).
+then(  (data) => {
+    res.json({data})
+  })})
 
 
 

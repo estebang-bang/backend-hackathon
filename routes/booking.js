@@ -13,4 +13,10 @@ router.post("/", (req, res) => {
     });
   });
 
+  router.get("/", (req, res) => {
+    Bookings.find().then((data) => {
+      res.json({ Bookings : data });
+    });
+  });
+
 module.exports = router;
